@@ -1,0 +1,1 @@
+20221227	00:12:05 	 9a4ef5e9-1932-4c45-aab9-a20288037eee 	 Error : Not Allow by Cors  

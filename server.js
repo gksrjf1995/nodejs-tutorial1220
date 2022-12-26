@@ -1,109 +1,110 @@
-const http = require("http");
-const os = require('os');
+const http = require('http');
 const path = require('path');
-const {add} = require('./math.js');
 const fs = require('fs');
-const fsPromise = require('fs').promises
-const devlog = require("./logEvent.js");
+const fsPromises = require('fs').promises;
+
+const logEvents = require('./logEvent');
 const EventEmitter = require('events');
-const { da } = require("date-fns/locale");
-const eventEmitter = new EventEmitter();
+const myEmitter = new EventEmitter();
+
+// initialize object 
+myEmitter.on('log', (msg, fileName) => logEvents(msg, fileName));
+const PORT = process.env.PORT || 4500;
 
 
-const PORT = process.env.PORT || 4500
-
-const serverFile = async(filePath , contentType , response) =>{
-  try{
-    const data = await fsPromise.readFile(filePath,'utf-8');
-    response.writeHead(200,{'Content-Type': contentType});
-    response.end(data);
-  }catch(err){
-    console.log(err);
-    response.statusCode = 500;
-    response.end();
-  }
+const serveFile = async (filePath, contentType, response) => {
+    try {
+        
+        const rawData = await fsPromises.readFile(
+            filePath,
+            !contentType.includes('image') ? 'utf8' : ''
+        );
+        const data = contentType === 'application/json' ? JSON.parse(rawData) : rawData;
+        response.writeHead(
+            filePath.includes('404.html') ? 404 : 200,
+            { 'Content-Type': contentType }
+        );
+        response.end(
+            contentType === 'application/json' ? JSON.stringify(data) : data
+        );
+    } catch (err) {
+        console.log(err);
+        myEmitter.emit('log', `${err.name}: ${err.message}`, 'errLog.txt');
+        response.statusCode = 500;
+        response.end();
+    }
 }
 
-const server = http.createServer(async(req,res)=>{
+
+const server = http.createServer((req,res)=>{
+    myEmitter.emit('log', `${req.url} si2bal\t ${req.method} sib2l`, 'reqLog.txt');
+
+    const extension = path.extname(req.url);
+   
     
- 
+    let contentType;
 
-  const extension = path.extname(req.url);
-  console.log(extension)
-
-  let contentType;
-
-  switch(extension){
-      case ".css":
-      contentType = "text/css"
-      case ".js":
-      contentType = "text/javascript"
-      case ".json":
-      contentType = "application/json"
-      case ".jpg":
-      contentType = "image/jpeg"
-      case ".png":
-      contentType= 'image/png'
-      case 'txt':
-      contentType = 'text/plain'
-      break;
-      default:
-      contentType ='text/html'
-  }
-
-  let filpath = 
-  contentType === "text/html" && req.url ==="/" ?
-  path.join(__dirname , 'views' , "index.html") :
-  contentType === "text/html" && req.url.slice(-1) === "/" ?
-  path.join(__dirname,"views",req.url , 'index.html') :
-  contentType === "text/html" ?
-  path.join(__dirname,'views',req.url) : path.join(__dirname,req.url)
-
-
-  if(!extension && req.url.slice(-1) !== '/') filpath += '.html'
-
-  const fileExits = fs.existsSync(filpath);
-
-  if(fileExits){
-    //파일 보여줌
-    console.log("ㅇㅁㄴ")
-    serverFile(filpath,contentType,res)
-  }else{
-    switch(path.parse(filpath).base){
-      case 'old-page.html':
-        res.writeHead(301,{'Loaction' : '/new-page.html'});
-        break;
-      case 'www-page.html':
-        res.writeHead(301,{'Loaction' : '/'});
-        break;
-      default:
-        console.log("dd")
-        serverFile(path.join(__dirname , 'views','404.html'),'text/html',res);
-
+    switch (extension) {
+        case '.css':
+            contentType = 'text/css';
+            break;
+        case '.js':
+            contentType = 'text/javascript';
+            break;
+        case '.json':
+            contentType = 'application/json';
+            break;
+        case '.jpg':
+            contentType = 'image/jpeg';
+            break;
+        case '.png':
+            contentType = 'image/png';
+            break;
+        case '.txt':
+            contentType = 'text/plain';
+            break;
+        default:
+            contentType = 'text/html';
     }
-  }
-  res.end();
-
-  // if(!extension)
-
-
-
-})
-
-server.listen(PORT,()=>{
-    console.log(`서버는 ${PORT}에서 돌아가고있다.`)
-})
-// eventEmitter.on('log', (msg)=>devlog(msg));
-// eventEmitter.emit('log',"msg부분");
+            let filePath = 
+            contentType === 'text/html' && req.url==='/' ?
+            path.join(__dirname , 'views' , 'index.html') :
+            contentType === 'text/html' && req.url.slice(-1) ==='/' ?
+            path.join(__dirname , 'views', req.url , 'index.html') :
+            contentType === 'text/html' ?
+            path.join(__dirname , 'views' , req.url) :
+            path.join(__dirname,  req.url);
 
 
+            if(!extension && req.url.slice(-1) !== '/') filePath+='.html'
+
+            const fileExists = fs.existsSync(filePath)
+
+            if (fileExists) {
+                serveFile(filePath, contentType, res);
+            } else {
+                switch (path.parse(filePath).base) {
+                    case 'old-page.html':
+                        res.writeHead(301, { 'Location': '/new-pagedsdas.html' },);
+                        res.end();
+                        break;
+                    case 'www-page.html':
+                        res.writeHead(301, { 'Location': '/' });
+                        res.end();
+                        break;
+                    default:
+                        serveFile(path.join(__dirname, 'views', '404.html'), 'text/html', res);
+                }
+            }
     
+        }
+);
+
+server.listen(PORT,()=>{console.log(`SERVER RUNNIG ON ${PORT}`)})
 
 
 
 
+  
 
-
-
-
-
+   

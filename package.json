@@ -2,9 +2,9 @@
   "name": "nodetutorial",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "nodetutorial6.js",
   "scripts": {
-    "dev": "nodemon server.js",
+    "dev": "nodemon nodetutorial6.js",
     "start": "node print.js"
   },
   "keywords": [],
@@ -14,7 +14,9 @@
     "nodemon": "^2.0.20"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "date-fns": "^2.29.3",
+    "express": "^4.18.2",
     "uuid": "^9.0.0"
   }
 }
