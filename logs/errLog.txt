@@ -1,1 +1,5 @@
 20221227	00:12:05 	 9a4ef5e9-1932-4c45-aab9-a20288037eee 	 Error : Not Allow by Cors  
+20221229	00:04:22 	 1c079160-bd9f-48c5-9d1e-6fbd7b111d99 	 Error : ENOENT: no such file or directory, stat 'C:\Users\gksrj\OneDrive\바탕 화면\공부\node\subdir\views\index.html'  
+20221229	00:04:36 	 87666e9b-c495-40c3-88f9-5ff5bb7793a0 	 Error : ENOENT: no such file or directory, stat 'C:\Users\gksrj\OneDrive\바탕 화면\공부\node\nodetutorial\subdir\views\index.html'  
+20221229	00:04:55 	 34554202-1023-4888-8721-afbb1ffe3baa 	 Error : ENOENT: no such file or directory, stat 'C:\Users\gksrj\OneDrive\바탕 화면\공부\node\nodetutorial\subdir\views\index.html'  
+20221229	00:16:51 	 fb4150a4-929a-40c4-bcc2-dc9b415227e9 	 TypeError : path.join is not a function  

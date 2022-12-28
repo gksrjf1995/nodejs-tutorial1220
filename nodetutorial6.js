@@ -1,4 +1,4 @@
-const exp = require('constants');
+
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -7,6 +7,7 @@ const router = express.Router();
 const {logger,logEvents} = require("./middleware/logEvent.js")
 const cors = require('cors');
 const errorHandler = require("./middleware/errorHandler.js")
+
 
 
 app.use(logger)
@@ -26,18 +27,12 @@ const corsoption = {
 app.use(cors(corsoption));
 app.use(express.urlencoded({extended : false}));
 app.use(express.json());
-app.use(express.static(path.join(__dirname,"./public")))
+app.use("/",express.static(path.join(__dirname,"./public")))
+app.use("/subdir", express.static(path.join(__dirname,"./public")))
 
-app.get("^/$|index(.html)?",(req,res)=>{
-    res.sendFile(path.join(__dirname,'views','index.html'))
-})
-app.get("/new-page(.html)?",(req,res)=>{
-    res.sendFile(path.join(__dirname,'views','new-page.html'))
-});
-
-app.get('/old-page(.html)?',(req,res)=>{
-    res.status(301).redirect('/new-page.html');
-});
+app.use("/",require("./routes/root.js"))
+app.use('/subdir',require('./routes/subdir.js'))
+app.use("/employees",require("./routes/api/employees.js"));
 
 
 
