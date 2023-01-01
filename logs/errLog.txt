@@ -3,3 +3,28 @@
 20221229	00:04:36 	 87666e9b-c495-40c3-88f9-5ff5bb7793a0 	 Error : ENOENT: no such file or directory, stat 'C:\Users\gksrj\OneDrive\바탕 화면\공부\node\nodetutorial\subdir\views\index.html'  
 20221229	00:04:55 	 34554202-1023-4888-8721-afbb1ffe3baa 	 Error : ENOENT: no such file or directory, stat 'C:\Users\gksrj\OneDrive\바탕 화면\공부\node\nodetutorial\subdir\views\index.html'  
 20221229	00:16:51 	 fb4150a4-929a-40c4-bcc2-dc9b415227e9 	 TypeError : path.join is not a function  
+20230102	00:32:29 	 6156b95e-4390-418f-8b59-ceab481ea047 	 Error : Cannot set headers after they are sent to the client  
+20230102	00:34:35 	 1e213c74-bb17-487e-a656-c0be94ba19e0 	 SyntaxError : Unexpected token f in JSON at position 4  
+20230102	00:35:01 	 0faef349-9c84-452c-9f33-32ada01a1dbb 	 SyntaxError : Unexpected token " in JSON at position 3  
+20230102	00:35:09 	 8a81dbfc-2329-46ef-b0ed-3b0339ff0117 	 SyntaxError : Unexpected string in JSON at position 25  
+20230102	00:39:34 	 36a508ad-68cf-4b30-943f-07fce18be6c0 	 SyntaxError : Unexpected token i in JSON at position 1  
+20230102	00:39:43 	 d0bfff53-5dfb-46ba-b47a-b82601217b39 	 TypeError : Cannot set properties of undefined (setting 'firstname')  
+20230102	00:39:45 	 0eafa237-07f4-4769-a3af-6aa50afc7e8f 	 TypeError : Cannot set properties of undefined (setting 'firstname')  
+20230102	00:40:36 	 fe6f659b-97d7-4663-a02a-e1d0002babed 	 Error : Cannot set headers after they are sent to the client  
+20230102	00:40:47 	 2cff47f4-1a73-4d3e-9c2f-34d65b9f64b1 	 Error : Cannot set headers after they are sent to the client  
+20230102	00:40:51 	 2b97d4bf-ad70-43cf-9efe-18c29053f386 	 Error : Cannot set headers after they are sent to the client  
+20230102	00:42:18 	 4ab13536-fd56-443f-9316-b0a54600eb52 	 Error : Cannot set headers after they are sent to the client  
+20230102	00:42:26 	 d2305427-231c-401f-8599-f7f541b15c6a 	 Error : Cannot set headers after they are sent to the client  
+20230102	00:42:35 	 f08581c1-10eb-4bc8-a8f2-6e29bd2bd50d 	 Error : Cannot set headers after they are sent to the client  
+20230102	00:42:35 	 76c709a6-8748-44dd-9b2f-24f5bbeb8379 	 Error : Cannot set headers after they are sent to the client  
+20230102	00:44:54 	 c94db703-fd77-482e-8041-3bf167d4fc4d 	 Error : Cannot set headers after they are sent to the client  
+20230102	00:44:59 	 25c021ac-e978-48d5-b49f-c4ce95daa02f 	 Error : Cannot set headers after they are sent to the client  
+20230102	00:45:22 	 820d6150-bc53-4681-9042-c16ea4e7cd39 	 Error : Cannot set headers after they are sent to the client  
+20230102	00:45:32 	 7a8fc954-a53b-4583-8b3a-f4724354ae24 	 Error : Cannot set headers after they are sent to the client  
+20230102	00:45:33 	 c918fb56-e724-414f-8a02-c9fa4991d336 	 Error : Cannot set headers after they are sent to the client  
+20230102	00:45:40 	 0cf68f9b-343a-41f9-a865-903fef9ad2e9 	 Error : Cannot set headers after they are sent to the client  
+20230102	00:45:47 	 cda65db8-09fe-420c-89b5-35820940a9da 	 Error : Cannot set headers after they are sent to the client  
+20230102	00:45:48 	 3b097f48-0137-440a-871c-79bd37536517 	 Error : Cannot set headers after they are sent to the client  
+20230102	00:45:49 	 f31f090d-6fce-465a-ae02-9053fecfcc3f 	 Error : Cannot set headers after they are sent to the client  
+20230102	00:45:49 	 8fc2224e-f998-4723-b99a-1063a56e3812 	 Error : Cannot set headers after they are sent to the client  
+20230102	00:45:50 	 36d4a427-d812-4e78-b720-3626d2824a55 	 Error : Cannot set headers after they are sent to the client  

@@ -64,7 +64,6 @@ app.all('*',(req,res)=>{
     }else if(req.accepted('txt')){
         res.type('type').send("404오류 발생")
     }
-    
 });
 
 app.use(errorHandler);
