@@ -33,8 +33,8 @@ app.use("/subdir", express.static(path.join(__dirname,"./public")))
 app.use("/",require("./routes/root.js"))
 app.use('/subdir',require('./routes/subdir.js'))
 app.use("/employees",require("./routes/api/employees.js"));
-
-
+app.use("/newuser",require("./routes/api/registeruser.js"));
+app.use("/auth",require("./routes/api/autUser.js"));
 
 
 //middleware 
