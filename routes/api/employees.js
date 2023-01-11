@@ -1,5 +1,6 @@
 const express = require('express');
 const router = require('express').Router();
+
 const {getAllemploys,
 createNewemploy,
 updateEmploy,
@@ -8,7 +9,7 @@ deleteemploy} = require("../../controllers/employControllers.js")
 
 
 router.route('/')
-.get(getAllemploys)
+.get( getAllemploys)
 .post(createNewemploy)
 .put(updateEmploy)
 .delete(deleteemploy);
