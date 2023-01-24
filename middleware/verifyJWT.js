@@ -11,7 +11,7 @@ const verifyJWT = (req,res,next)=>{
         if(err) return res.sendStatus(403);
         req.user = decode.username;
         next();
-    })
+    });
 }
 
 module.exports = verifyJWT

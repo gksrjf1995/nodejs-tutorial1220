@@ -3,12 +3,12 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const PORT = process.env.PORT || 3500;
-const router = express.Router();
+
 const {logger,logEvents} = require("./middleware/logEvent.js")
 const cors = require('cors');
 const errorHandler = require("./middleware/errorHandler.js")
 const verifyJWT = require('./middleware/verifyJWT.js')
-
+const cookieParser = require('cookie-parser');
 
 app.use(logger)
 
@@ -27,6 +27,7 @@ const corsoption = {
 app.use(cors(corsoption));
 app.use(express.urlencoded({extended : false}));
 app.use(express.json());
+app.use(cookieParser());
 app.use("/",express.static(path.join(__dirname,"./public")))
 app.use("/subdir", express.static(path.join(__dirname,"./public")))
 
@@ -34,6 +35,8 @@ app.use("/",require("./routes/root.js"))
 app.use('/subdir',require('./routes/subdir.js'))
 app.use("/newuser",require("./routes/api/registeruser.js"));
 app.use("/auth",require("./routes/api/autUser.js"));
+app.use("/refresh",require('./routes/api/refresh.js'));
+
 app.use(verifyJWT);
 app.use("/employees",require("./routes/api/employees.js"));
 
